@@ -1,0 +1,83 @@
+import React from "react";
+import { useState } from "react"
+import Button from "../components/Button.tsx" 
+import DisplayCharts from "../components/DisplayCharts.tsx"
+import * as Plot from "@observablehq/plot";
+
+type Categories = {
+    grocery: number,
+    clothing: number,
+    entertainment: number,
+}
+
+export default function AddItem ({}) {
+    const [amount, setAmount] = useState('');
+    const [totalValue, setTotalValue] = useState(0);
+    const [selectedCategory, setSelectedCategory] = useState<keyof Categories>('grocery');
+
+    const [categories, setCategories] = useState({
+        grocery: 0,
+        clothing: 0,
+        entertainment: 0
+    })
+
+    function addItem() {
+        const numValue = parseFloat(amount);
+        if (!isNaN(numValue) && numValue !== 0) {
+            setCategories(prev => ({
+                ...prev,
+                [selectedCategory]: prev[selectedCategory] + numValue,
+            }));
+            
+            setTotalValue((prev) => prev + numValue); 
+            setAmount('');
+        }
+    }
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        addItem();
+    }
+
+    const data = Object.entries(categories).map(([category, value]) => ({
+        category,
+        value,
+    }));
+
+    return  ( 
+    <form onSubmit={handleSubmit} className="flex p-1 m-1 gap-4" action="">Type:
+        <select 
+            className="border-2 border-gray-300 p-2 rounded-md"
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value as keyof Categories)}
+            >
+            <option value="grocery">Grocery</option>
+            <option value="clothing">Clothing</option>
+            <option value="entertainment">Entertainment</option>
+        </select>
+    
+        <input 
+            className="bg-gray-200" 
+            type="number" 
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            placeholder="Enter price (€)"
+        />
+    
+        <Button className="bg-blue-500 p-1 m-1 border-1 rounded-sm hover:bg-blue-600 hover:scale-105 cursor-pointer"
+        >Add Spending
+        </Button>
+
+        <DisplayCharts
+        options={{
+          marks: [
+            Plot.barY(data, { x: "category", y: "value", fill: "category" }),
+            Plot.ruleY([0]),
+          ],
+        }}
+        />
+        
+        <p>Total value of spendings: {totalValue}€</p>
+    </form> 
+    )
+}
