@@ -1,22 +1,20 @@
-import * as Plot from "@observablehq/plot";
-import { useEffect, useRef } from "react";
+import React from "react";
+import { Bar, BarChart } from "recharts"
 
-interface PlotFigureProps {
-  options: Plot.PlotOptions;
+type DataPoint = {
+  category: string;
+  value: number;
+};
+
+type ChartProps = {
+  data: DataPoint[];
+  className?: string;
 }
 
-export default function DisplayCharts({ options }: PlotFigureProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (containerRef.current) {
-      const plot = Plot.plot(options);
-      containerRef.current.innerHTML = '';
-      containerRef.current.appendChild(plot);
-      
-      return () => plot.remove();
-    }
-  }, [options]);
-
-  return <div ref={containerRef} />;
+export default function DisplayCharts({ data, className}: ChartProps) {
+  return (
+    <BarChart className={className} width={500} height={400} data={data}>
+      <Bar dataKey="value" fill="#a90ca4ff"></Bar>
+    </BarChart>
+  );
 }
