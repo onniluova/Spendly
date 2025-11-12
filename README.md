@@ -6,8 +6,7 @@ The app is created using Vite, TS and React.
 Currently has three categories to select from. I'm planning to add an add category feature in the future for custom expenses.
 
 
-If you want to set this up for yourself, it's simple.
-
+Setup instructions:
 
 First, pull the repository.
 
@@ -20,6 +19,8 @@ Run npm install in the root folder of the project.
 Run the dev environment
 
 ``` npm run dev ```
+
+And the app should be running.
 
 Current app looks like this:
 
