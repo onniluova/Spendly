@@ -1,4 +1,4 @@
-** Spendly **
+# Spendly
 
 Spendly is a side project of mine made for managing your monthly expenses.
 The app is created using Vite, TS and React.
