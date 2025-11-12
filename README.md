@@ -5,4 +5,15 @@ Spendly is a side project of mine made for managing your monthly expenses. I sta
 The app is created using Vite, TS and React.
 Currently has three categories to select from. I'm planning to add an add category feature in the future for custom expenses.
 
+If you want to set this up for yourself, it's simple.
+
+First, pull the repository.
+´´ git pull https://github.com/onniluova/Spendly.git ´´
+
+Run npm install in the root folder of the project.
+´´npm i´´
+
+Run the dev environment
+´´ npm run dev´´
+
 <img width="892" height="967" alt="image" src="https://github.com/user-attachments/assets/884709d9-e9d1-458a-9c6f-a2544b4a97b3" />
