@@ -7,6 +7,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/home" element={<Home>spendly</Home>}></Route>
+        <Route path="/charts" element={<Home>spendly</Home>}></Route>
+        <Route path="/history" element={<Home>spendly</Home>}></Route>
       </Routes>
     </Router>
   )

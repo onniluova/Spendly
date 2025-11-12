@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react"
 import Button from "../components/Button.tsx" 
 import DisplayCharts from "../components/DisplayCharts.tsx"
+import TabButtonHeader from "./Navbar.tsx";
 
 type Categories = {
     grocery: number,
@@ -43,8 +44,10 @@ export default function AddItem ({}) {
         value,
     }));
 
+    console.log(data);
+
     return  ( 
-    <form onSubmit={handleSubmit} className="grid grid-cols-1 p-1 m-1 gap-6 w-[60vw]" action="">Type:
+    <form onSubmit={handleSubmit} className="grid grid-cols-1 p-1 m-1 gap-6 w-[40vw]" action="">Type:
         <select 
             className="border-2 border-gray-300 p-2 rounded-md"
             value={selectedCategory}
@@ -63,12 +66,12 @@ export default function AddItem ({}) {
             placeholder="Enter price (€)"
         />
     
-        <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-4 px-6 rounded-xl hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-200 transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
+        <Button className="w-full cursor-pointer bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-4 px-6 rounded-xl hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-200 transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
         >Add Spending
         </Button>
 
-        <DisplayCharts className="mx-auto bg-gray-100 rounded-md" data={data}></DisplayCharts>
-        
+        <DisplayCharts className="mx-auto bg-gray-100 rounded-md w-[40vw]" data={data}></DisplayCharts>
+
         <p className="mx-auto">Total value of spendings: {totalValue}€</p>
     </form> 
     )

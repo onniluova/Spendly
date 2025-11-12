@@ -1,5 +1,5 @@
 import React from "react";
-import { Bar, BarChart } from "recharts"
+import { ResponsiveContainer, BarChart, Bar, XAxis, Tooltip, YAxis } from "recharts";
 
 type DataPoint = {
   category: string;
@@ -9,12 +9,20 @@ type DataPoint = {
 type ChartProps = {
   data: DataPoint[];
   className?: string;
-}
+  height?: number;
+};
 
-export default function DisplayCharts({ data, className}: ChartProps) {
+export default function DisplayCharts({ data, className, height = 300 }: ChartProps) {
   return (
-    <BarChart className={className} width={500} height={400} data={data}>
-      <Bar dataKey="value" fill="#a90ca4ff"></Bar>
-    </BarChart>
+    <div className={className}>
+      <ResponsiveContainer width="100%" height={height}>
+        <BarChart data={data}>
+          <XAxis dataKey="category" />
+          <YAxis></YAxis>
+          <Tooltip />
+          <Bar dataKey="value" fill="#a94cf5ff" />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 }
