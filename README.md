@@ -9,19 +9,19 @@ Currently has three categories to select from. I'm planning to add an add catego
 # Setup instructions
 
 
-## First, pull the repository.
+## First, clone the repository.
 
-``` git pull https://github.com/onniluova/Spendly.git ```
+``` git clone https://github.com/onniluova/Spendly.git ```
 
 ## Run npm install in the root folder of the project.
 
-``` npm i ```
+``` npm install ```
 
 ## Run the dev environment
 
 ``` npm run dev ```
 
-And the app should be running.
+Once the server is running, open the app in your browser.
 
 Current app looks like this:
 
