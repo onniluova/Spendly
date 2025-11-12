@@ -6,17 +6,18 @@ The app is created using Vite, TS and React.
 Currently has three categories to select from. I'm planning to add an add category feature in the future for custom expenses.
 
 
-Setup instructions:
+# Setup instructions
 
-First, pull the repository.
+
+## First, pull the repository.
 
 ``` git pull https://github.com/onniluova/Spendly.git ```
 
-Run npm install in the root folder of the project.
+## Run npm install in the root folder of the project.
 
 ``` npm i ```
 
-Run the dev environment
+## Run the dev environment
 
 ``` npm run dev ```
 
