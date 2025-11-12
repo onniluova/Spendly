@@ -22,4 +22,5 @@ Run the dev environment
 ``` npm run dev ```
 
 Current app looks like this:
+
 <img width="892" height="967" alt="image" src="https://github.com/user-attachments/assets/884709d9-e9d1-458a-9c6f-a2544b4a97b3" />
