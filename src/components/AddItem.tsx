@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react"
 import Button from "../components/Button.tsx" 
 import DisplayCharts from "../components/DisplayCharts.tsx"
-import TabButtonHeader from "./Navbar.tsx";
+import { useDataContext } from "../context/DataContextProvider.tsx";
 
 type Categories = {
     grocery: number,
@@ -12,31 +12,14 @@ type Categories = {
 
 export default function AddItem ({}) {
     const [amount, setAmount] = useState('');
-    const [totalValue, setTotalValue] = useState(0);
     const [selectedCategory, setSelectedCategory] = useState<keyof Categories>('grocery');
 
-    const [categories, setCategories] = useState({
-        grocery: 0,
-        clothing: 0,
-        entertainment: 0
-    })
-
-    function addItem() {
-        const numValue = parseFloat(amount);
-        if (!isNaN(numValue) && numValue !== 0) {
-            setCategories(prev => ({
-                ...prev,
-                [selectedCategory]: prev[selectedCategory] + numValue,
-            }));
-            
-            setTotalValue((prev) => prev + numValue); 
-            setAmount('');
-        }
-    }
+    const {categories, totalValue, addItem } = useDataContext();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        addItem();
+        const numValue = parseFloat(amount)
+        addItem(selectedCategory, numValue);
     }
 
     const data = Object.entries(categories).map(([category, value]) => ({
@@ -44,7 +27,7 @@ export default function AddItem ({}) {
         value,
     }));
 
-    console.log(data);
+    console.log(categories, totalValue);
 
     return  ( 
     <form onSubmit={handleSubmit} className="grid grid-cols-1 p-1 m-1 gap-6 w-[40vw]" action="">Type:
